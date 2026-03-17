@@ -16,13 +16,12 @@ class AssignedBox(models.Model):
     vendedor = fields.Char('Vendedor', readonly=True)
     repartidor = fields.Char('Repartidor', readonly=True)
 
-
     @api.model
     def init(self):
         drop_view_if_exists(self.env.cr, 'assigned_boxes')
         self.env.cr.execute("""
             create or replace view assigned_boxes as (
-                  select sl.id, s.name as pedido, pt.name as producto,sl.product_uom_qty as qty,  resp.name as vendedor,  usm.login as repartidor
+                  select sl.id, s.name as pedido, pt.name as producto,sl.product_uom_qty as qty, pu.name unidad,  resp.name as vendedor,  usm.login as repartidor
                     from sale_order_line  sl
                     left join sale_order s on s.id= sl.order_id
                     left join stock_picking sp on sp.origin =s.name
@@ -32,6 +31,6 @@ class AssignedBox(models.Model):
                     left join res_users us on us.id = s.user_id
                     left join res_partner resp on resp.id= us.partner_id
                     left join res_users usm on usm.id = sp.deliveryman_id
-                    group by resp.name,sl.id, s.name, pt.name,sl.product_uom_qty,usm.login
+                    group by resp.name,sl.id, s.name, pt.name,sl.product_uom_qty, pu.name,usm.login
 
             )""")

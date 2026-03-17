@@ -1,7 +1,6 @@
-## -*- coding: utf-8 -*-
-
-from openerp import models, fields, api, _, tools
-from openerp.exceptions import UserError, RedirectWarning, ValidationError
+#
+from odoo import models, fields, api, _, tools
+from odoo.exceptions import UserError, RedirectWarning, ValidationError
 import shutil
 import logging
 _logger = logging.getLogger(__name__)
@@ -9,7 +8,6 @@ class PurchaseOrder(models.Model):
     _inherit = "purchase.order"
     personal_id = fields.Many2one('res.users', string='Encargado',help='Personal encargado de la compra ')
 
-    @api.multi
     def button_confirm(self):
         for order in self:
             attachment_obj = self.env['ir.attachment']

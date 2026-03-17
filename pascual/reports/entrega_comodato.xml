@@ -2,7 +2,7 @@
 <odoo>
 
     <template id="report_deliverycomodato_document">
-        <t t-call="report.html_container">
+        <t t-call="web.html_container">
             <t t-call="pascual.external_layout_comodato">
                 <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
                 <div class="page">
@@ -144,14 +144,13 @@
         </t>
     </template>
 
-    <report
-            string="Entrega Comodato"
-            id="action_report_deliverycomodato"
-            model="stock.picking"
-            report_type="qweb-pdf"
-            name="pascual.report_deliverycomodato"
-            file="pascual.report_deliverycomodato"
-             paperformat="pascual.paperformat_reportesfootercredit"
-        />
+    <record id="action_report_deliverycomodato" model="ir.actions.report">
+        <field name="name">Entrega Comodato</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pascual.report_deliverycomodato</field>
+        <field name="report_file">pascual.report_deliverycomodato</field>
+        <field name="paperformat_id" ref="pascual.paperformat_reportesfootercredit"/>
+    </record>
 
 </odoo>

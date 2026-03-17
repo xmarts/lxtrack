@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-from openerp import http
+from odoo import http
 
 # class XmartsPac(http.Controller):
 #     @http.route('/xmarts_pac/xmarts_pac/', auth='public')

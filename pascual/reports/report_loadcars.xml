@@ -52,15 +52,13 @@
         </t>
     </template>
 
-    <report
-        id="action_report_loadcars"
-        string="Carga de Carros"
-        model="stock.move"
-        report_type="qweb-pdf"
-        name="pascual.report_loadcars"
-        file="pascual.report_loadcars"
-        paperformat="pascual.paperformat_reportesxltrack"
-
-    />
+    <record id="action_report_loadcars" model="ir.actions.report">
+        <field name="name">Carga de Carros</field>
+        <field name="model">stock.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pascual.report_loadcars</field>
+        <field name="report_file">pascual.report_loadcars</field>
+        <field name="paperformat_id" ref="pascual.paperformat_reportesxltrack"/>
+    </record>
 
 </odoo>

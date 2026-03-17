@@ -4,17 +4,17 @@
 
            <!-- report , stock inventories date... start -->
         <record model="ir.ui.view" id="report_assignedboxes_tree">
-            <field name="name">report.assignedboxes.tree</field>
+            <field name="name">report.assignedboxes.list</field>
             <field name="model">assigned.boxes</field>
             <field name="arch" type="xml">
-                <tree string="Reporte de Asignación de Caja" create="false">
+                <list create="false">
                      <field name="vendedor"/>
                         <field name="pedido"/>
                         <field name="producto"/>
-                        <field name="qty" />
+                        <field name="qty"/>
                         <field name="unidad"/>
                         <field name="repartidor"/>
-                </tree>
+                </list>
             </field>
         </record>
 
@@ -23,10 +23,7 @@
             <field name="model">assigned.boxes</field>
             <field name="arch" type="xml">
                 <search string="Reporte de Asignación de Caja">
-                <group expand="0" string="Group By">
-                    <filter string="Vendedor" icon="terp-partner" domain="[]" context="{'group_by':'vendedor'}"/>
-                        <separator orientation="vertical"/>
-                </group>
+                    <filter string="Vendedor" name="vendedor" domain="[]" context="{'group_by':'vendedor'}"/>
                 </search>
             </field>
         </record>
@@ -40,7 +37,7 @@
                        <field name="vendedor"/>
                         <field name="pedido"/>
                         <field name="producto"/>
-                        <field name="qty" />
+                        <field name="qty"/>
                         <field name="unidad"/>
                         <field name="repartidor"/>
                     </group>
@@ -51,13 +48,11 @@
         <record model="ir.actions.act_window" id="action_assignedboxes">
             <field name="name">Reporte de Asignacion de Caja</field>
             <field name="res_model">assigned.boxes</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
             <field name="help">Reporte de Asignacion de Caja...</field>
         </record>
 
-        <menuitem parent="sale.menu_sale_report" action="action_assignedboxes" id="menu_report_assignedboxes" sequence="4"
-           />
+        <menuitem parent="sale.menu_sale_report" action="action_assignedboxes" id="menu_report_assignedboxes" sequence="4"/>
 
     </data>
 </odoo>

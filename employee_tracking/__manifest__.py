@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "Employee Tracking",
 
@@ -16,7 +15,7 @@
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': "19.0.1.0.0",
 
     # any module necessary for this one to work correctly
     'depends': ['base','hr'],

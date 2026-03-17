@@ -1,5 +1,4 @@
-<openerp>
-  <data>
+<odoo>
    <!-- <record id="view_xmartspackstockpicking_form_inherit" model="ir.ui.view">
             <field name="name">view.xmartspackstockpicking.form.add.text.field</field>
             <field name="model">stock.picking</field>
@@ -18,5 +17,4 @@
         </record>-->
    
 
-  </data>
-</openerp>
+</odoo>

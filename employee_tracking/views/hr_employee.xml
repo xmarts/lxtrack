@@ -1,5 +1,4 @@
-<openerp>
-  <data>
+<odoo>
       <record id="view_employee_form_inherit" model="ir.ui.view">
             <field name="name">view.employee.form.add.text.field</field>
             <field name="model">hr.employee</field>
@@ -13,5 +12,4 @@
             </field>
     </record>
 
-  </data>
-</openerp>
+</odoo>

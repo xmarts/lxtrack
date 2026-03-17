@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': "Pascual",
 
@@ -16,18 +15,18 @@
     # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': "19.0.1.0.0",
 
     # any module necessary for this one to work correctly
     'depends': ['base','sale','purchase','stock','delivery','hr'],
     # always loaded
     'data': [
         'data/ir_sequence_data.xml',
-         'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/purchase_views.xml',
         'views/product_container_views.xml',
         'views/product.xml',
-        'views/partner.xml',
+        #'views/partner.xml', xpaths no se encuentran en la vista principal
         'views/sale_views.xml',
         #'views/stock_picking.xml',
         'views/assigned_boxes.xml',

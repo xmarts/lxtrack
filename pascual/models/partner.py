@@ -1,12 +1,13 @@
-## -*- coding: utf-8 -*-
-
-from openerp import models, fields, api, _, tools
-from openerp.exceptions import UserError, RedirectWarning, ValidationError
+#
+from odoo import models, fields, api, _, tools
+from odoo.exceptions import UserError, RedirectWarning, ValidationError
 import shutil
 import logging
 _logger = logging.getLogger(__name__)
 class ResPartner(models.Model):
+    _name = "res.partner"
     _inherit="res.partner"
+    
     phone = fields.Char(string="Telefono")
     name_commercial = fields.Char(string="Nombre Comercial")
     sector_id = fields.Many2one('partner.sector', string="Sector")
@@ -26,7 +27,7 @@ class ResPartner(models.Model):
                                        ('thursday', 'Jueves'), ('friday', 'Viernes'), ('saturday', 'Sábado'),
                                        ('sunday', 'Domingo')])
     sellersecundary_id = fields.Many2one('res.users', string="Vendedor Secundario")
-    process = fields.Boolean(string="A procesar", default=False)
+    # process = fields.Boolean(string="A procesar", default=False) genera conflicto con campo del mismo nombre heredado de res.partner
     date = fields.Date(string="Fecha")
     channelsales_id = fields.Selection(string="Canal de Ventas",
                                        selection=[('local', 'Locales'), ('autoservice', 'Autoservicio'), ('distribuitor', 'Distribuidores'),
@@ -36,7 +37,7 @@ class ResPartner(models.Model):
     def create(self, vals):
         child_id = []
         if 'child_ids' in vals:
-            vals['type'] = 'contact';
+            vals['type'] = 'contact'
             print(vals)
             child_id.append(vals['child_ids'])
             if len(child_id[0]) == 0:

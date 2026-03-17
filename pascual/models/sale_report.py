@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import tools
@@ -119,7 +118,7 @@ class SaleReport(models.Model):
         """
         return group_by_str
 
-    @api.model_cr
+    @api.model
     def init(self):
         #self._table = 'sale_report'
         #"(_("entro %s")%(self._table))

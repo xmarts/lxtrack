@@ -1,20 +1,19 @@
-## -*- coding: utf-8 -*-
-
-from openerp import models, fields, api, _, tools
-from openerp.exceptions import UserError, RedirectWarning, ValidationError
+#
+from odoo import models, fields, api, _, tools
+from odoo.exceptions import UserError, RedirectWarning, ValidationError
 import shutil
 import logging
 _logger = logging.getLogger(__name__)
 class SaleOrder(models.Model):
     _inherit = "sale.order"
     reason_rejection = fields.Many2one('reason.rejection',string="Motivo de Rechazo")
-    zona = fields.Char(string="Zona")
+    # zona = fields.Char(string="Zona") no se puede asignar "zona" a self.zona por missmatch 
+    zona = fields.Many2one('res.zona', string="Zona")
 
     @api.onchange('partner_id')
     def zonapartner(self):
         self.zona = self.partner_id.zona
 
-    @api.multi
     def recompute_coupon_lines2(self):
         #raise UserError(_("hola"))
         hi = self.id

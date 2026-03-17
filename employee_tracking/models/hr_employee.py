@@ -1,7 +1,6 @@
-## -*- coding: utf-8 -*-
-
-from openerp import models, fields, api, _, tools
-from openerp.exceptions import UserError, RedirectWarning, ValidationError
+#
+from odoo import models, fields, api, _, tools
+from odoo.exceptions import UserError, RedirectWarning, ValidationError
 import shutil
 import logging
 from hashlib import sha1
@@ -18,7 +17,6 @@ class HrEmployee(models.Model):
             vals['password']=pasw
         return super(HrEmployee, self).create(vals)
 
-    @api.one
     def write(self, vals):
         if vals.get('password'):
             val=str(vals['password']).encode('utf-8')

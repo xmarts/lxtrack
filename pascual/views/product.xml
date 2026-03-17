@@ -1,5 +1,4 @@
-<openerp>
-    <data>
+<odoo>
         <record id="view_producttemplate_form_inherit" model="ir.ui.view">
             <field name="name">view.producttemplate.form.add.text.field</field>
             <field name="model">product.template</field>
@@ -29,5 +28,4 @@
                 </data>
             </field>
         </record>
-    </data>
-</openerp>
+</odoo>

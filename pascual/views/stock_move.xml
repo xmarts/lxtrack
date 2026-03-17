@@ -1,11 +1,10 @@
-<openerp>
-  <data>
+<odoo>
       <record id="view_stockmove_form_inherit" model="ir.ui.view">
             <field name="name">view.stockmove.form.add.text.field</field>
             <field name="model">stock.move</field>
             <field name="inherit_id" ref="stock.view_move_tree"/>
             <field name="arch" type="xml">
-                <xpath expr="//tree/field[@name='picking_id']" position="after">
+                <xpath expr="//list/field[@name='picking_id']" position="after">
                     <field name="zona"/>
                 </xpath>
             </field>
@@ -32,5 +31,4 @@
         </record>
 
 
-  </data>
-</openerp>
+</odoo>

@@ -1,16 +1,12 @@
-<openerp>
-  <data>
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
     <record id="view_zona_search" model="ir.ui.view">
             <field name="name">view.zona.search</field>
             <field name="model">res.zona</field>
             <field name="arch" type="xml">
                 <search string="Zonas Preventa">
                     <field name="name"/>
-                    <newline/>
-                    <group expand="0" string="Group By...">
-                         <filter string="zona" icon="terp-partner" domain="[]" context="{'group_by':'name'}"/>
-                        <separator orientation="vertical"/>
-                    </group>
+                    <filter string="Zona" name="zona" domain="[]" context="{'group_by':'name'}"/>
                 </search>
             </field>
         </record>
@@ -21,22 +17,22 @@
             <field name="arch" type="xml">
                 <form string="Zonas Preventa">
                     <sheet>
-                        <group >
-                           <field name="name" />
-                            <field name="user_id" />
+                        <group>
+                            <field name="name"/>
+                            <field name="user_id"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
         <record id="view_zona_tree" model="ir.ui.view">
-            <field name="name">view.zona.tree</field>
+            <field name="name">view.zona.list</field>
             <field name="model">res.zona</field>
             <field name="arch" type="xml">
-                <tree string="Zonas Preventa">
+                <list>
                     <field name="name"/>
-                    <field name="user_id" />
-                </tree>
+                    <field name="user_id"/>
+                </list>
             </field>
         </record>
 
@@ -46,16 +42,10 @@
             <field name="name">Zonas Preventa</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.zona</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">list,form</field>
         </record>
 
 
-        <menuitem action="zona_action_generic" name="Zonas Preventa"
-                  id="menu_zonas"
-                  parent="sale.product_menu_catalog"
-                  sequence="3"
-      />
+        <menuitem action="zona_action_generic" name="Zonas Preventa" id="menu_zonas" parent="sale.product_menu_catalog" sequence="3"/>
 
-  </data>
-</openerp>
+</odoo>
