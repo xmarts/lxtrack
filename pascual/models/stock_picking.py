@@ -9,11 +9,12 @@ class StockPicking(models.Model):
     deliveryman_id = fields.Many2one('res.users', string="Repartidor")
     zona = fields.Char(string="Zona")
 
-    @api.model
-    def create(self, vals):
-        if vals['partner_id']:
-            partner2 =vals['partner_id']
-            partner= self.env['res.partner'].search([('id','=',partner2)])
-            vals['zona'] = partner.zona
-        return super(StockPicking, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals['partner_id']:
+                partner2 = vals['partner_id']
+                partner = self.env['res.partner'].search([('id', '=', partner2)])
+                vals['zona'] = partner.zona
+        return super(StockPicking, self).create(vals_list)
 

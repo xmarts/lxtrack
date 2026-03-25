@@ -33,13 +33,13 @@ class ResPartner(models.Model):
                                        selection=[('local', 'Locales'), ('autoservice', 'Autoservicio'), ('distribuitor', 'Distribuidores'),
                                        ('export', 'Exportaciones'), ('special', 'Especiales')])
     whithout_invoice = fields.Boolean(string="Sin Factura", default=False)
-    @api.model
-    def create(self, vals):
-        child_id = []
-        if 'child_ids' in vals:
-            vals['type'] = 'contact'
-            print(vals)
-            child_id.append(vals['child_ids'])
-            if len(child_id[0]) == 0:
-                raise UserError('Es necesario dar de alta una  Dirección de Entrega')
-        return super(ResPartner, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            child_id = []
+            if 'child_ids' in vals:
+                vals['type'] = 'contact'
+                child_id.append(vals['child_ids'])
+                if len(child_id[0]) == 0:
+                    raise UserError('Es necesario dar de alta una  Dirección de Entrega')
+        return super(ResPartner, self).create(vals_list)

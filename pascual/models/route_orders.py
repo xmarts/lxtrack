@@ -36,9 +36,10 @@ class RouteOrder(models.Model):
     stock_picking_id = fields.Many2one('stock.picking', string='Albaran de salida', required=False)
 
 
-    @api.model
-    def create(self, vals):
-        if vals.get('name', 'New') == 'New':
-            vals['name'] = self.env['ir.sequence'].next_by_code('route.order') or 'New'
-        return super(RouteOrder, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('name', 'New') == 'New':
+                vals['name'] = self.env['ir.sequence'].next_by_code('route.order') or 'New'
+        return super(RouteOrder, self).create(vals_list)
 

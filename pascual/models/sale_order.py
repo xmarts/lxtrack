@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
 
     @api.onchange('partner_id')
     def zonapartner(self):
-        self.zona = self.partner_id.zona
+        self.zona = self.partner_id.zona if self.partner_id and self.partner_id.zona else False
 
     def recompute_coupon_lines2(self):
         #raise UserError(_("hola"))
